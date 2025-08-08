@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (whatsappBtn) {
         whatsappBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            const phoneNumber = "573142750624";
+            const phoneNumber = "573155055971";
             const message = "👋 Hola Javier, he visitado tu portafolio y me gustaría hablar sobre una oportunidad profesional. ¿Podemos conversar? 💼";
             const encodedMessage = encodeURIComponent(message);
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
@@ -315,4 +315,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     updateLanguage();
+
 });

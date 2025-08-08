@@ -36,7 +36,6 @@ body {
     line-height: 1.6;
     -webkit-font-smoothing: antialiased; 
     -moz-osx-font-smoothing: grayscale;
-    /* Necesario para posicionar el canvas como fondo de toda la página */
     position: relative;
 }
 
@@ -44,7 +43,6 @@ body {
 #animated-content-background {
     position: relative;
     overflow: hidden;
-    /* La animación se aplica a este contenedor */
     background: linear-gradient(45deg, #101214, #1a1c20, #001f3f, #101214);
     background-size: 400% 400%;
     animation: gradient-animation 20s ease infinite;
@@ -83,7 +81,6 @@ body {
     text-decoration: none;
 }
 
-/* El contenedor de acciones solo es para móvil, por eso está oculto en desktop */
 .header-actions {
     display: none;
     align-items: center;
@@ -163,7 +160,6 @@ body {
     z-index: 1; 
 }
 
-/* MODIFICACIÓN: Estilos para que el canvas de partículas cubra toda la página */
 #particle-canvas {
     position: fixed;
     top: 0;
@@ -320,7 +316,6 @@ body {
     transform: translateY(0);
 }
 
-/* Eje de la línea de tiempo */
 .timeline::after {
     content: '';
     position: absolute;
@@ -351,7 +346,6 @@ body {
 .timeline.visible .timeline-item:nth-child(2) { transition-delay: 0.4s; }
 .timeline.visible .timeline-item:nth-child(3) { transition-delay: 0.6s; }
 
-/* Punto de la línea de tiempo */
 .timeline-item::after {
     content: '';
     position: absolute;
@@ -662,8 +656,7 @@ body {
     display: inline-flex;
     align-items: center;
     
-    /* Nuevos estilos para el "botón" */
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo negro semitransparente */
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 0.75rem 1.5rem;
     border-radius: 50px;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
@@ -757,6 +750,30 @@ body {
 
 
 /*RESPONSIVE Y MENÚ MÓVIL*/
+
+/* Estilos del botón de idioma fuera del menú */
+#language-toggle {
+    background-color: rgba(16, 18, 20, 0.8); 
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    border: none;
+}
+
+#language-toggle:hover {
+    color: var(--primary-color);
+    box-shadow: 0 4px 20px rgba(16, 18, 20, 0.8);
+    background-color: rgba(16, 18, 20, 0.8);
+}
+
 @media (max-width: 768px) {
     .section-title {
         font-size: 2rem;
@@ -769,6 +786,15 @@ body {
     /* Muestra el contenedor de acciones en móviles */
     .header-actions {
         display: flex; 
+    }
+    .header-actions #language-toggle {
+        display: block;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+        position: relative;
+    }
+    .nav-menu #language-toggle {
+        display: none;
     }
 
     /* Oculta la lista de menú en móviles por defecto */
@@ -789,182 +815,7 @@ body {
         border-right: 3px solid var(--primary-color);
         box-shadow: 5px 0 20px rgba(0, 0, 0, 0.7);
     }
-    .nav-menu #language-toggle {
-        display: block;
-    }
 
-    .nav-menu.active {
-        left: 0;
-    }
-
-    .nav-item {
-        margin: 1.5rem 0; 
-        opacity: 0;
-        transform: scale(0.9);
-        transition: opacity 0.4s ease, transform 0.4s ease;
-        position: relative;
-    }
-
-    .nav-item:not(:last-child)::after {
-        content: '';
-        position: absolute;
-        bottom: -0.75rem;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 60%;
-        height: 1px;
-        background: linear-gradient(90deg, rgba(0, 168, 255, 0), rgba(0, 168, 255, 0.3), rgba(0, 168, 255, 0));
-        transition: width 0.3s ease;
-    }
-    
-    .nav-item:hover::after {
-        width: 80%;
-    }
-    
-    .nav-menu.active .nav-item {
-        opacity: 1;
-        transform: scale(1);
-    }
-    
-    .nav-menu.active .nav-item:nth-child(1) { transition-delay: 0.1s; }
-    .nav-menu.active .nav-item:nth-child(2) { transition-delay: 0.15s; }
-    .nav-menu.active .nav-item:nth-child(3) { transition-delay: 0.2s; }
-    .nav-menu.active .nav-item:nth-child(4) { transition-delay: 0.25s; }
-    .nav-menu.active .nav-item:nth-child(5) { transition-delay: 0.3s; }
-    .nav-menu.active .nav-item:nth-child(6) { transition-delay: 0.35s; }
-
-    .nav-link {
-        font-size: 2.2rem;
-        font-weight: 600;
-        text-shadow: 0 0 10px rgba(0, 168, 255, 0.2);
-        transition: color 0.3s ease, transform 0.3s ease;
-    }
-    
-    .nav-link:hover {
-        color: var(--secondary-color);
-        transform: scale(1.05);
-    }
-
-    .hamburger {
-        display: block;
-        z-index: 101;
-    }
-
-    .hamburger.active i {
-        transform: rotate(90deg);
-        color: var(--primary-color);
-        transition: transform 0.6s cubic-bezier(0.86, 0, 0.07, 1);
-    }
-
-    .hamburger.active i:before {
-        content: '\f00d'; 
-    }
-
-    /* -- Hero Section Móvil -- */
-    .hero-photo {
-        width: 150px;
-        height: 150px;
-    }
-
-    .hero-title {
-        font-size: 2.2rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1.2rem;
-        padding: 0 1rem;
-    }
-    
-    .hero-links {
-        flex-direction: column;
-        gap: 1.2rem;
-        width: 100%;
-        max-width: 300px;
-        margin: 0 auto;
-    }
-    
-    .hero-links a {
-        width: 100%;
-        justify-content: center;
-        padding: 0.8rem 1rem;
-    }
-
-    /* -- Timeline Móvil -- */
-    .timeline::after {
-        left: 20px;
-    }
-    
-    .timeline-item {
-        padding-left: 50px;
-    }
-
-    .timeline-item::after {
-        left: 13px;
-    }
-}
-/* Estilos del botón de idioma fuera del menú */
-#language-toggle {
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    padding: 0.5rem 1.5rem;
-    border-radius: 50px;
-    color: #FFFFFF;
-    font-weight: 600;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: auto;
-    border: none; 
-}
-
-#language-toggle:hover {
-    background-color: #00c8ffcb; 
-    background-image: none;
-    color: #FFFFFF;
-    transform: translateY(-3px);
-    box-shadow: 0 4px 20px rgba(64, 187, 224, 0.5);
-}
-
-/* RESPONSIVE Y MENÚ MÓVIL */
-@media (max-width: 768px) {
-    #language-toggle {
-        display: none;
-    }
-    
-    .nav-menu #language-toggle {
-        display: none;
-    }
-
-    /* Muestra el contenedor de acciones en móviles */
-    .header-actions {
-        display: flex;
-    }
-    .header-actions #language-toggle {
-        display: block;
-        padding: 0.5rem 1rem;
-        font-size: 0.9rem;
-        position: relative;
-    }
-
-    .nav-menu {
-        position: fixed;
-        top: 0;
-        left: -100%;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 80%;
-        max-width: 400px;
-        height: 100vh;
-        background: linear-gradient(to bottom, rgba(16, 18, 20, 0.98), rgba(26, 28, 32, 0.98));
-        backdrop-filter: blur(8px);
-        transition: left 0.6s cubic-bezier(0.86, 0, 0.07, 1);
-        z-index: 100;
-        border-right: 3px solid var(--primary-color);
-        box-shadow: 5px 0 20px rgba(0, 0, 0, 0.7);
-    }
-    
     .nav-menu.active {
         left: 0;
     }

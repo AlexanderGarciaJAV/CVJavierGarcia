@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
         whatsappBtn.addEventListener('click', function(e) {
             e.preventDefault();
             const phoneNumber = "573155055971";
-            const message = "👋 Hola Javier, he visitado tu portafolio y me gustaría hablar sobre una oportunidad profesional. ¿Podemos conversar? 💼";
+            const message = "🤝 Estimado Javier, espero que se encuentre muy bien. He revisado su portafolio profesional y me ha parecido excelente su trayectoria y proyectos. Me encantaría conversar con usted acerca de una posible oportunidad de colaboración. 📅 ¿Podríamos coordinar una reunión?";
             const encodedMessage = encodeURIComponent(message);
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
             window.open(whatsappUrl, '_blank');
@@ -291,6 +291,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const languageToggleBtns = document.querySelectorAll('#language-toggle');
 
     function updateLanguage() {
+        // Actualiza todos los elementos con la traducción
         document.querySelectorAll('[data-lang-key]').forEach(element => {
             const key = element.getAttribute('data-lang-key');
             const translationText = translations[currentLang][key];
@@ -302,12 +303,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         });
+        
+        // Actualiza el texto del botón de idioma
+        languageToggleBtns.forEach(btn => {
+            btn.textContent = (currentLang === 'es') ? 'EN/ES' : 'ES/EN';
+        });
     }
 
     if (languageToggleBtns.length > 0) {
         languageToggleBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                currentLang = currentLang === 'es' ? 'en' : 'es';
+                currentLang = (currentLang === 'es') ? 'en' : 'es';
                 localStorage.setItem('language', currentLang);
                 updateLanguage();
             });
@@ -315,5 +321,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     updateLanguage();
-
 });

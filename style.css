@@ -774,6 +774,7 @@ body {
     background-color: rgba(16, 18, 20, 0.8);
 }
 
+/* ESTILOS PARA MÓVILES Y TABLETS */
 @media (max-width: 768px) {
     .section-title {
         font-size: 2rem;
@@ -923,5 +924,20 @@ body {
 
     .timeline-item::after {
         left: 13px;
+    }
+}
+
+/* ESTILOS PARA TABLETS Y MÓVILES ALARGADOS */
+@media (max-width: 768px) and (min-height: 700px) {
+    .nav-menu {
+        padding-top: 5rem;
+    }
+
+    .nav-item {
+        margin: 1.2rem 0;
+    }
+    
+    .nav-link {
+        font-size: 1.8rem;
     }
 }

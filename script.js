@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'value-8': 'Resolución de problemas',
             'contact-title': 'Contacto',
             'contact-subtitle': 'Siempre estoy abierto a nuevas oportunidades y colaboraciones.',
-            'footer-copy': '&copy; 2025 Javier Garcia. Todos los derechos reservados.',
+            'footer-copy': '&copy; 2026 Javier Garcia. Todos los derechos reservados.',
         },
         'en': {
             'page-title': 'Javier Alexander Garcia Mariño | Full-Stack Developer',
@@ -283,7 +283,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'value-8': 'Problem-solving',
             'contact-title': 'Contact',
             'contact-subtitle': 'I am always open to new opportunities and collaborations.',
-            'footer-copy': '&copy; 2025 Javier Garcia. All Rights Reserved.',
+            'footer-copy': '&copy; 2026 Javier Garcia. All Rights Reserved.',
         }
     };
     
@@ -322,3 +322,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
     updateLanguage();
 });
+
